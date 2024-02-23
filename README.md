@@ -1,4 +1,4 @@
-laravel vue 3 quasar vite starter kit 
+laravel 10 vue 3 quasar v2.14.5 vite starter kit 
 this porject will have vue 3 quasar served through laravel application with the help of vite pulgin and will have spaties 
 media library, querybuilder and permissions setup in laravel.
 
