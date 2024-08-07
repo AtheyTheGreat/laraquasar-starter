@@ -1,8 +1,14 @@
 <?php
 
+use App\Http\Controllers\AboutController;
+use App\Http\Controllers\ClientController;
+use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\PermissionController;
+use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\RolePermissionController;
+use App\Http\Controllers\ServiceController;
+use App\Http\Controllers\TagController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -32,6 +38,12 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::post('/roles/update', [RolePermissionController::class, 'updatePermissionForRole'])->name('roles.update');
         Route::post('/roles/revoke', [RolePermissionController::class, 'revokePermissionForRole'])->name('roles.revoke');
     });
+    
+    Route::resource('projects', ProjectController::class);
+    Route::resource('tags', TagController::class);
+    Route::resource('galleries', GalleryController::class);
+    Route::resource('abouts', AboutController::class);
+    Route::resource('clients', ClientController::class);
+    Route::resource('services', ServiceController::class);
+    Route::get('me', [UserController::class, 'me']);
 });
-
-Route::get('me', [UserController::class, 'me'])->middleware('auth:sanctum');

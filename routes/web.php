@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\PageController;
+use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -14,9 +16,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [PageController::class, 'homePage'])->name('home');
+
+Route::get('project', [PageController::class, 'projectHomePage'])->name('project');
+Route::get('/projects-by-tag', [ProjectController::class, 'getProjectsByTag'])->name('filter-projects-by-tag');
+Route::get('about', [PageController::class, 'aboutHomePage'])->name('about');
+Route::get('contact', [PageController::class, 'contactHomePage'])->name('contact');
+Route::get('services', [PageController::class, 'serviceHomePage'])->name('services');
+Route::get('client', [PageController::class, 'clientHomePage'])->name('client');
+Route::get('project/{id}', [PageController::class, 'projectPage'])->name('projects.show');
+Route::get('service/{id}', [PageController::class, 'servicePage'])->name('services.show');
+
+
 
 Route::get('/login', function () {
     return view('auth/login');

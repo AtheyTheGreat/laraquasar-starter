@@ -13,7 +13,7 @@
         </q-header>
 
         <q-drawer show-if-above v-model="leftDrawerOpen" side="left" bordered>
-            //
+            <MenuItems />
         </q-drawer>
 
         <q-page-container>
@@ -26,6 +26,7 @@
 <script setup>
 import { ref, onMounted } from 'vue'
 import { useAuthStore } from '../stores/auth';
+import MenuItems from '../components/MenuItems.vue'
 
 
 const authStore = useAuthStore()
